@@ -34,9 +34,7 @@ for link in links:
     full_link = base_url + link
     response = requests.get(full_link)
     soup = BeautifulSoup(response.text, 'html.parser')
-    print('-1')
     aozora_links = [a['href'] for a in soup.find_all('a', href=True) if aozora_link_pattern.match(a['href'])]
-    print('0')
     
     # 青空文庫のリンクから本文を取得し、ルビを削除して保存
     for aozora_link in aozora_links:
